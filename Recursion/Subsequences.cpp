@@ -39,8 +39,22 @@ void reverseArr(int arr[],int start,int end){
   reverseArr(arr,start+1,end-1);
 }
 
-void allSubSequences(){
-  
+void allSubSequences(int index,vector<int> &ds, int arr[],int n){
+  if(index == n){
+    for(auto x : ds){
+      cout<<x<<" ";
+    }
+    if(ds.size() == 0)
+      cout<<"{}";
+    cout<<"\n";
+    return;
+  }
+  // considering the ele
+  ds.push_back(arr[index]);
+  allSubSequences(index+1,ds,arr,n);
+  ds.pop_back();
+  // not including/considering the ele
+  allSubSequences(index+1,ds,arr,n);
 }
 
 
@@ -49,12 +63,10 @@ int main()
   cout<<"\n\n";
 
     // REVERSING AN ARRAY
-  int arr[5] = {1,2,3,4,5};
-  cout<<"Reversing the arr \n";
-  reverseArr(arr,0,4);
-  for(int  i = 0; i < 5; i++)
-      cout<<arr[i]<<" ";
-
+  vector<int> ds;
+  int arr[] = {3,1,2},n = 3;
+  cout<<"Printing all the subsequences \n";
+  allSubSequences(0,ds,arr,3);
 
 
   
