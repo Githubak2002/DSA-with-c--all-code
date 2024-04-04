@@ -6,38 +6,18 @@
 using namespace std;
 
 //  print 2D arr ele
-void print2Darr(vector<vector<int>> arr)
+void print2DArr(vector<vector<int>> arr)
 {
-  int rows = arr.size(), cols = arr[0].size();
+  int rows = arr.size() ,cols;
   for (int row = 0; row < rows; row++)
   {
+    cols = arr[row].size();
     for (int col = 0; col < cols; col++)
     {
       cout << arr[row][col] << " ";
     }
     cout << endl;
   }
-}
-
-// I tried
-vector<vector<int>> generate(int numRows)
-{
-  vector<vector<int>> ans;
-  for (int i = 1; i <= numRows; i++)
-  {
-    vector<int> row(i, 1);
-    int j = 0;
-    if (i >= 3)
-      j = 2;
-    while (j >= 2 && j < i)
-    {
-    }
-    ans.push_back(row);
-  }
-
-  // if(numRows >= 1)
-
-  return ans;
 }
 
 // leet code solution - comination formula
@@ -56,14 +36,47 @@ vector<vector<int>> generate(int numRows)
   return result;
 }
 
+// my code - o/p [100%]
+vector<vector<int>> generate3(int numRows){
+  vector<vector<int>> res;
+  vector<int> arr (1,1);
+  vector<int> arr2 (2,1);
+  if(numRows >= 1)
+    res.push_back(arr);
+
+  if(numRows >= 2)
+    res.push_back(arr2);
+  
+  vector<int> tmpArr, preArr = arr2;
+  int ele;
+
+  for (int i = 3; i <= numRows; i++)
+  {
+    for (int x = 0; x < preArr.size(); x++)
+    {
+      if(x == 0)
+        tmpArr.push_back(1);
+      else
+        tmpArr.push_back(preArr[x-1]+preArr[x]);
+    }
+    tmpArr.push_back(1);
+    res.push_back(tmpArr);
+    preArr = tmpArr;
+    tmpArr.clear(); 
+  }
+  
+  return res;
+}
+
 int main()
 {
   cout << "\n\n=======================\n\n";
 
-  int rows = 2;
+  int rows = 6;
   vector<vector<int>> ans;
+
   ans = generate(rows);
-  print2Darr(ans);
+  print2DArr(ans);
 
   cout << "\n\n=======================";
   return 0;

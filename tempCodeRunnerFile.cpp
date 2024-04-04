@@ -1,23 +1,37 @@
-void nextPermutation(vector<int> &nums)
-{
-  int tmp = 0, index = -1;
-  for (int i = nums.size() - 2; i >= 0; i--)
-  {
-    if (nums[i] < nums[i + 1])
-    {
-      index = i;
-      // cout<<"index = "<<index<<endl;
-      break;
-    }
-  }
 
-  for (int k = nums.size() - 1; k > index; k--)
+#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+// #include<cmath>            // pow(x,n);
+// #include<algorithm>
+using namespace std;
+
+int main()
+{
+  cout << "\n\n=======================\n\n";
+
+  cout << "\n\n=======================";
+  return 0;
+}
+
+// print arr ele
+void printarray(vector<int> arr)
+{
+  for (int i = 0; i < arr.size(); i++)
+    cout << arr[i] << " ";
+  cout << endl;
+}
+
+// print 2D arr ele
+void print2Darr(vector<vector<int>> arr)
+{
+  int rows = arr.size(), cols = arr[0].size();
+  for (int row = 0; row < rows; row++)
   {
-    if (nums[index] < nums[k])
+    for (int col = 0; col < cols; col++)
     {
-      swap(nums[index], nums[k]);
-      break;
+      cout << arr[row][col] << " ";
     }
+    cout << endl;
   }
-  sort(nums.begin() + index + 1, nums.end());
 }
