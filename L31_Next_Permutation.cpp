@@ -43,8 +43,8 @@ int main()
 {
   cout << "\n\n=======================\n\n";
 
-  vector<int> arr2 = {3, 2, 1}, arr1 = {6, 2, 7, 4, 3, 2, 1}, arr4={1, 3, 2}, arr={2, 1, 5, 4, 3, 0, 0};
-  cout<<"Finding a no just greater than given no [using same digits]\n";
+  vector<int> arr2 = {3, 2, 1}, arr1 = {6, 2, 7, 4, 3, 2, 1}, arr4 = {1, 3, 2}, arr = {2, 1, 5, 4, 3, 0, 0}, a1 = {7, 8, 4, 3, 1};
+  cout << "Finding a no just greater than given no [using same digits]\n";
   cout << "Initial arr" << endl;
   printarray(arr);
   cout << "Next permutation" << endl;

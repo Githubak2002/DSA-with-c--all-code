@@ -1,4 +1,4 @@
-// 263. Ugly Number
+// 75. Sort Colors
 
 #include <bits/stdc++.h>
 #include <iostream>
@@ -29,34 +29,29 @@ void print2Darr(vector<vector<int>> arr)
   }
 }
 
+void sortColors(vector<int> &nums)
+{
+  int*l = &nums[0],*m = &nums[0],*h = &nums[nums.size()-1];
+  while (&m < &h){
+    if(*h == 2)
+      h--;
+    else if(*m == 2){
+      swap(m,h);
+      h--;
+    }
+  } 
+}
+
 int main()
 {
   cout << "\n\n=======================\n\n";
+  vector<int> a = {2,0,2,1,1,0} ;
+  cout<<"Array is:";
+  printarray(a);
+  sortColors(a);
+  cout<<"After sorting 0,1,2 array is:";
+  printarray(a);
 
   cout << "\n\n=======================";
   return 0;
 }
-
-
-
-char toLowerCaseFun(char ch)
-{
-  if (ch >= 'a' && ch <= 'z')
-    return ch;
-  else
-    return ch + 32;
-}
-
-// sort(arr.begin(), arr.end());
-// reverse(arr.begin(), arr.end());
-
-// char ch = '1';   int n = ch - '0';   // cout<<n;  n = 1
-
-// vector<int> ans (6,0);      // ans = {0,0,0,0,0,0}
-
-//  vector<int> arr = {1,2,3};   cout<<"first ele "<<*arr.begin();
-
-// string str;
-// cout<<"enter a string"<<endl;
-// getline(cin,str);
-// cout<<"String = "<<str;

@@ -1,4 +1,4 @@
-// 263. Ugly Number
+// Basics of array
 
 #include <bits/stdc++.h>
 #include <iostream>
@@ -33,11 +33,30 @@ int main()
 {
   cout << "\n\n=======================\n\n";
 
+  vector<int> a1(5, 1); // {1,1,1,1,1}
+  cout << "a1 (1,5) = ";
+  printarray(a1);
+
+  // ========== SORT function (vector) ==========
+  vector<int> as1 = {4, 3, 5, 2, 1};
+  cout << "Before sorting arr: ";
+  printarray(as1);
+  sort(as1.begin(), as1.end());
+  cout << "After sorting arr: ";
+  printarray(as1);
+
+
+  // ========== REVERSE function (vector) ==========
+  reverse(as1.begin(), as1.end());
+  cout << "After reversing arr: ";
+  printarray(as1);
+
+  cout<<"first ele of array: "<<*as1.begin();
+
+
   cout << "\n\n=======================";
   return 0;
 }
-
-
 
 char toLowerCaseFun(char ch)
 {
