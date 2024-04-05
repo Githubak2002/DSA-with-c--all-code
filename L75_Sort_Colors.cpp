@@ -31,13 +31,16 @@ void print2Darr(vector<vector<int>> arr)
 
 void sortColors(vector<int> &nums)
 {
-  int*l = &nums[0],*m = &nums[0],*h = &nums[nums.size()-1];
-  while (&m < &h){
-    if(*h == 2)
+  int l = 0 , m = 0, h = nums.size()-1;
+  while (nums[m] < nums[h]){
+    if(nums[h] == 2)
       h--;
-    else if(*m == 2){
-      swap(m,h);
+    else if(nums[m] == 2){
+      swap(nums[m],nums[h]);
       h--;
+    }else if(h==0){
+      swap(nums[l],nums[h]);
+      l++;
     }
   } 
 }
