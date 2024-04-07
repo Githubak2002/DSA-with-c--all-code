@@ -19,10 +19,10 @@ void printArray(vector<int>a){
     cout<<"\n";    
 }
 
-vector<int> twoSum(int n, vector<int> &arr, int target){
+vector<int> twoSum(vector<int> &nums, int target){
     unordered_map<int, int> mpp;
-    for (int i = 0; i < n; i++){
-        int num = arr[i];
+    for (int i = 0; i < nums.size(); i++){
+        int num = nums[i];
         int moreNeeded = target - num;
         if (mpp.find(moreNeeded) != mpp.end()) {
             return {mpp[moreNeeded], i};
