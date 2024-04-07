@@ -19,28 +19,6 @@ void printArray(vector<int>a){
     cout<<"\n";    
 }
 
-int find(vector<int>& nums, int b,int prevIndex){
-    for (int i = prevIndex+1; i < nums.size(); i++){
-        if(nums[i]==b)
-            return i;
-    }
-    return -1;
-}
-
-// vector<int> twoSum(vector<int>& nums, int target) {
-//     int a,b,j;
-
-//     for (int i = 0; i < nums.size(); i++){
-//         if(nums[i]>target)
-//             continue;
-    
-//         for(int x = i+1; x < nums.size(); x++){
-//         if(nums[x]==target-nums[i])
-//             return {i,x};
-//         }        
-//     }
-// }
-
 vector<int> twoSum(int n, vector<int> &arr, int target){
     unordered_map<int, int> mpp;
     for (int i = 0; i < n; i++){
@@ -55,9 +33,24 @@ vector<int> twoSum(int n, vector<int> &arr, int target){
 }
 
 int main(){
-    
+      cout << "\n\n=======================\n\n";
+
     // vector<int> arr= {2,7,11,15};
     vector<int> arr= {-1,-2,-3,-4,-5};
+    unordered_map<int,int> um1;
+    vector<int> ar1 = {4,5,3,2,5,2,4};
+    for (int i = 0; i < ar1.size(); i++)
+    {
+        if(um1[ar1[i]] >= 1) um1[ar1[i]]++;
+        else um1[ar1[i]] = 1;
+    }
+
+    for (auto mele = um1.begin(); mele != um1.end(); mele++)
+    {
+        cout<<mele->first<<" -> "<<mele->second<<"\n";
+    }   
+
+
     cout<<"\nArray elements are ----\n";
     printArray(arr);
 
@@ -65,7 +58,9 @@ int main(){
     vector<int> res;
     res = twoSum(5,arr,target);
     
-    cout<<"\nThe res array is\n";
-    printArray(res); 
+    cout<<"\nThe res indices are: ";
+    printArray(res); cout<<"that give the sum to be -> "<<target<<endl;
     return 0;
+
+  cout << "\n\n=======================";
 }
