@@ -48,29 +48,32 @@ int main()
 {
   cout << "\n\n=======================\n\n";
 
-  // ======================= map ===================== 
+  // ======================= map =====================
   map<int, int> m1;
 
   vector<int> arr = {5, 4, 5, 2, 1, 2, 2, 3};
   for (int l = 0; l < arr.size(); l++)
   {
-    if (m1[arr[l]] >= 1) ++m1[arr[l]];
-    else  m1[arr[l]] = 1;
+    if (m1[arr[l]] >= 1)
+      ++m1[arr[l]];
+    else
+      m1[arr[l]] = 1;
   }
 
   for (auto i = m1.begin(); i != m1.end(); i++)
     cout << i->first << " -> " << i->second << '\n';
   cout << "\n\n";
 
-
-  // ======================= unordered_map ===================== 
+  // ======================= unordered_map =====================
   unordered_map<int, int> um1;
-  vector<int> sarr = {2,4,5,6,5,3,2,4,5};
+  vector<int> sarr = {2, 4, 5, 6, 5, 3, 2, 4, 5};
 
   for (int i = 0; i < sarr.size(); i++)
   {
-    if (um1[sarr[i]] >= 1)  um1[sarr[i]]++;
-    else  um1[sarr[i]] = 1;
+    if (um1[sarr[i]] >= 1)
+      um1[sarr[i]]++;
+    else
+      um1[sarr[i]] = 1;
   }
 
   for (auto j = um1.begin(); j != um1.end(); j++)
@@ -88,3 +91,4 @@ int main()
   cout << "\n\n=======================";
   return 0;
 }
+
