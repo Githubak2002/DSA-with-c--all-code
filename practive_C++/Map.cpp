@@ -63,6 +63,9 @@ int main()
   for (auto i = m1.begin(); i != m1.end(); i++)
     cout << i->first << " -> " << i->second << '\n';
   cout << "\n\n";
+  // for (auto it : m1)
+  //   cout<< it.first <<" -> "<<it.second<<endl;
+  
 
   // ======================= unordered_map =====================
   unordered_map<int, int> um1;
