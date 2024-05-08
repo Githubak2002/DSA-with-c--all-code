@@ -29,7 +29,7 @@ int returnSumOfN(int n){
 }
 
 // REVERSE AN ARRAY
-void reverseArr(int arr[],int start,int end){
+void reverseArr(int arr[],int start,int end){ 
   // void reverseArr(int arr[],int start,int n){
   // if(start >= n/2) return
   if(start >= end)
@@ -39,6 +39,9 @@ void reverseArr(int arr[],int start,int end){
   reverseArr(arr,start+1,end-1);
 }
 
+
+
+// Printing all the subsequences of an array
 void allSubSequences(int index,vector<int> &ds, int arr[],int n){
   if(index == n){
     for(auto x : ds){

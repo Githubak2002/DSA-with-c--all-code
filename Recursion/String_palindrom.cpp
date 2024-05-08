@@ -32,7 +32,7 @@ bool isPalindrom(string s, int i)
   // isPalindrom(s, ++i);
 }
 
-// Nth FIBONACII NO - 0th index
+// Nth FIBONACII NO - 0th index - complexity nearby (2^n)
 int fibonacii(int n)
 {
   if (n <= 1)
@@ -41,6 +41,7 @@ int fibonacii(int n)
   int last = fibonacii(n - 1);        // first called
   int second_last = fibonacii(n - 2); // second called
   return last + second_last;
+  // return fibonacii(n-1)*fibonacii(n-2);
 }
 
 int main()
