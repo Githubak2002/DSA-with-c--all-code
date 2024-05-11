@@ -42,6 +42,7 @@ void reverseArr(int arr[],int start,int end){
 
 
 // Printing all the subsequences of an array
+// time complexity - 2^n * n 
 void allSubSequences(int index,vector<int> &ds, int arr[],int n){
   if(index == n){
     for(auto x : ds){
@@ -55,11 +56,28 @@ void allSubSequences(int index,vector<int> &ds, int arr[],int n){
   // considering the ele
   ds.push_back(arr[index]);
   allSubSequences(index+1,ds,arr,n);
-  ds.pop_back();
   // not including/considering the ele
+  ds.pop_back();
   allSubSequences(index+1,ds,arr,n);
 }
 
+
+void allSubSeq(int index,vector<int> &ds,int arr[],int n){
+  if(index == n){
+    for(auto x : ds){
+      cout<<x<<" ";
+    }
+    if(ds.size() == 0)
+      cout<<"{}";
+    cout<<"\n";
+    return;
+  }
+  ds.push_back(arr[index]);
+  allSubSeq(index+1,ds,arr,n);
+  ds.pop_back();
+  allSubSeq(index+1,ds,arr,n);
+
+}
 
 int main()
 {
@@ -69,12 +87,13 @@ int main()
   vector<int> ds;
   int arr[] = {3,1,2},n = 3;
   cout<<"Printing all the subsequences \n";
-  allSubSequences(0,ds,arr,3);
-
-
+  allSubSeq(0,ds,arr,3);
   
   
 
   cout<<"\n\n";
   return 0;
 }
+
+
+
