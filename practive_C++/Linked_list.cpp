@@ -5,8 +5,7 @@
 #include <math.h>
 using namespace std;
 
-class node
-{
+class node{
 public:
     int data;
     node *next;
@@ -28,9 +27,7 @@ public:
 
 };
 
-// INSERTION 
-void printLL(node *head)
-{  
+void printLL(node *head){  
     node *temp;
     temp = head;
     while (temp->next != NULL)
@@ -41,8 +38,8 @@ void printLL(node *head)
     cout << temp->data << "->"<< "NULL" << endl;
 }
 
-void insertAtEnd(int newdata, node *&head)
-{
+// INSERTION 
+void insertAtEnd(int newdata, node *&head){
     node *newNode = new node(newdata);
     node *tailNode = head;
     while (tailNode->next != NULL)
@@ -51,15 +48,13 @@ void insertAtEnd(int newdata, node *&head)
     tailNode->next = newNode;
 }
 
-void insertAtBeg(int newdata, node *&head)
-{
+void insertAtBeg(int newdata, node *&head){
     node *temp = new node(newdata);
     temp->next = head;
     head = temp;
 }
 
-void insertAtPosition(int newdata, node *&head, int position)
-{
+void insertAtPosition(int newdata, node *&head, int position){
     if (position == 1)
     {
         insertAtBeg(newdata, head);
