@@ -42,13 +42,24 @@ int maxSubArray(vector<int>& nums) {
   return max;
 }
 
+int maxSubArray1(vector<int>& nums) {
+  int sum = 0,max = INT_MIN,fSum = 0;
+  for (int i = 0; i < nums.size(); i++){
+    sum += nums[i];
+    // max = sum;
+    if(sum>max) max = sum;
+    if(sum<0) sum = 0;
+  } 
+  return max;
+}
+
 int main()
 {
   cout << "\n\n=======================\n\n";
 
   vector<int> arr = {-2,1,-3,4,-1,2,1,-5,4};    // o/p - 6
   vector<int> arr2 = {5,4,-1,7,8};               // o/p - 23
-  cout<<"Result: "<<maxSubArray(arr2);
+  cout<<"Result: "<<maxSubArray1(arr2);
 
 
   cout << "\n\n=======================";
