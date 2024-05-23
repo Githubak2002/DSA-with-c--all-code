@@ -1,8 +1,5 @@
-// 263. Ugly Number
-
+// <bits/stdc++.h> includes -  <iostream> <iomanip> <fstream> <sstream> <cmath> <cstdio> <cstdlib> <algorithm> <string> <vector> <deque> <queue> <stack> <set> <map> <unordered_set> <unordered_map> <bitset> <list> <iterator> <functional> <numeric> <cassert> <cstddef>
 #include <bits/stdc++.h>
-#include <iostream>
-#include <vector>
 // #include<cmath>            // pow(x,n);
 // #include<algorithm>
 using namespace std;
