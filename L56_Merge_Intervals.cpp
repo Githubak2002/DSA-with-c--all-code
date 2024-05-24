@@ -29,6 +29,7 @@ void print2Darr(vector<vector<int>> arr)
   }
 }
 
+// on leetcode
 vector<vector<int>> merge(vector<vector<int>>& intervals) {
   vector<vector<int>> res;
   int n = intervals.size(),start,end; 
@@ -46,6 +47,29 @@ vector<vector<int>> merge(vector<vector<int>>& intervals) {
     }
   }
   return res;  
+}
+
+// MAD lab
+vector<vector<int>> mergeArr(vector<vector<int>> &arr) {
+    vector<vector<int>> ans;
+
+    sort(arr.begin(), arr.end());
+
+    int i = 0;
+    int n = arr.size();
+
+    while (i < n) {
+        int start = arr[i][0], end = arr[i][1];
+
+        while (i < n - 1 && end >= arr[i + 1][0]) {
+            end = max(end, arr[i + 1][1]);
+            i++;
+        }
+        ans.push_back({start, end});
+        i++;
+    }
+
+    return ans;
 }
 
 int main()
