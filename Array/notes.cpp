@@ -2,7 +2,7 @@
 Array?
 Where the array is stored? - 
   first index 0 can be random, but next address can be predicted if we know 0th index
-How to calculate the address of an ele
+  How to calculate the address of an ele
 
 */
 
