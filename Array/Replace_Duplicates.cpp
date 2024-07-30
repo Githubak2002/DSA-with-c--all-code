@@ -18,7 +18,6 @@ void removingDuplicatesoptimizeWay(vector<int> &arr){
       last = arr[i];
     }
   }
-  
 }
 
 // using SET

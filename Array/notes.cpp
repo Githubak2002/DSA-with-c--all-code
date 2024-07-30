@@ -9,7 +9,7 @@ Where the array is stored? -
 #include<bits/stdc++.h>
 using namespace std;
 
-// initilaay all the ele will have values = 0, max size = 10^7
+// initillay all the ele will have values = 0, max size = 10^7
 int globalArr[3];
 
 int main (){
