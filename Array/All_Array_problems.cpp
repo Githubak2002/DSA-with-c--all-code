@@ -98,6 +98,24 @@ long long maxSubarraySum(vector<int> arr, int n)
     return maxSum;
 }
 
+// BEST TIME TO BUY AND SELL STOCK
+int maximumProfit(vector<int> &prices){
+    int buy = 0,sell = 1;
+    int maxPro = prices[sell] - prices[buy];
+    while(sell<prices.size()-1){
+        if(prices[buy]>prices[sell]){
+            buy = sell;
+            sell++;
+            maxPro = max(maxPro,prices[sell] - prices[buy]);
+        } else {
+            sell++;
+            maxPro = max(maxPro, prices[sell] - prices[buy]);
+        }
+    }
+    return maxPro>0 ? maxPro : 0;
+
+}
+
 
 // max length of sub array with a target
 int maxLengthSubarray(int arr[], int n, int targetSum){
@@ -124,6 +142,10 @@ int maxLengthSubarray(int arr[], int n, int targetSum){
 
 
 int main (){
+  // vector<int> arr= {7,1,2,4,6,2};
+  vector<int> arr= {7,6,5,2};
+  // vector<int> arr= {6,2,4,5,9,12,9,5};
+  cout<<"Profit: "<<maximumProfit(arr);
 
   return 0;
 }
