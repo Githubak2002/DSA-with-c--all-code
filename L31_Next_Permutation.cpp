@@ -27,6 +27,10 @@ void nextPermutation(vector<int> &nums)
       break;
     }
   }
+  if(index == -1){
+    reverse(nums.begin(),nums.end());
+    return;
+  }
 
   for (int k = nums.size() - 1; k > index; k--)
   {
@@ -46,10 +50,10 @@ int main()
   vector<int> arr2 = {3, 2, 1}, arr1 = {6, 2, 7, 4, 3, 2, 1}, arr4 = {1, 3, 2}, arr = {2, 1, 5, 4, 3, 0, 0}, a1 = {7, 8, 4, 3, 1};
   cout << "Finding a no just greater than given no [using same digits]\n";
   cout << "Initial arr" << endl;
-  printarray(arr);
+  printarray(arr2);
   cout << "Next permutation" << endl;
-  nextPermutation(arr);
-  printarray(arr);
+  nextPermutation(arr2);
+  printarray(arr2);
 
   cout << "\n\n=======================";
   return 0;
