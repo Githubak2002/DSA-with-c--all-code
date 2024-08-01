@@ -1,5 +1,5 @@
 
-
+// 2D ARRAY - start from here - https://www.youtube.com/watch?v=N0MgLvceX7M&list=PLgUwDviBIf0rENwdL0nEH0uGom9no0nyB&index=14
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -10,7 +10,6 @@ void printArray(vector<int> arr)
     cout << arr[i] << " ";
   cout << endl;
 }
-
 
 // rotating an array about n ele
 void rotate(vector<int> &arr, int rotateEle)
@@ -88,24 +87,52 @@ vector<int> alternateNumbers(vector<int> &a)
 }
 
 // Superior ele - ele > all the ele present to its right
-vector<int> superiorElements(vector<int>&a) {
-    int maxEle,n = a.size();
-    vector<int> ans;
-    cout<<"n = "<<n<<endl;
-    if(n >= 1){
-        maxEle = a[n-1];
-        ans.push_back(a[n-1]);
+vector<int> superiorElements(vector<int> &a)
+{
+  int maxEle, n = a.size();
+  vector<int> ans;
+  cout << "n = " << n << endl;
+  if (n >= 1)
+  {
+    maxEle = a[n - 1];
+    ans.push_back(a[n - 1]);
+  }
+  for (int i = n - 2; i >= 0; i--)
+  {
+    if (maxEle < a[i])
+    {
+      ans.push_back(a[i]);
+      maxEle = max(maxEle, a[i]);
     }
-    for(int i=n-2;i>=0;i--){
-        if(maxEle < a[i]){
-            ans.push_back(a[i]);
-            maxEle = max(maxEle,a[i]);
-        }
-    }
-    return ans;
+  }
+  return ans;
 }
 
-
+// finding the longest sequence in arr
+int longestSuccessiveElements(vector<int> &a)
+{
+  sort(a.begin(), a.end());
+  // printArray(a);
+  // cout<<"\n";
+  int count = 1, maxCount = 1;
+  for (int i = 0; i < a.size() - 1; i++)
+  {
+      if(a[i] == a[i+1])
+        continue;
+    if (a[i]+1 == a[i+1])
+    {
+      count++;
+      // cout<<"maxC: "<<count<<endl;
+    }
+    else
+    {
+      maxCount = max(maxCount,count);
+      count = 1;
+    }
+  }
+  maxCount = max(maxCount,count);
+  return maxCount;
+}
 
 // Kadane's algo to find the maxsum of sub array
 long long maxSubarraySum(vector<int> arr, int n)
@@ -157,8 +184,6 @@ int maximumProfit(vector<int> &prices)
   // return maxPro>0 ? maxPro : 0;
 }
 
-
-
 // finding next grater permutation [3,2,5,4,0] - [3,4,0,2,5]
 vector<int> nextGreaterPermutation(vector<int> &A)
 {
@@ -189,8 +214,6 @@ vector<int> nextGreaterPermutation(vector<int> &A)
   return A;
 }
 
-
-
 // max length of sub array with a target
 int maxLengthSubarray(int arr[], int n, int targetSum)
 {
@@ -215,18 +238,22 @@ int maxLengthSubarray(int arr[], int n, int targetSum)
 
 int main()
 {
-  cout<<"=======================\n\n";
+  cout << "=======================\n\n";
 
   // vector<int> arr= {7,1,2,4,6,2};
-  vector<int> ans;
-  // vector<int> arr = {7, 6, 5, 2};
-  vector<int> arr = {5,4,3};
+  int ans;
+  // vector<int> arr = {5,8,3,2,1,4};
+  vector<int> arr = {15,6,2,1,16,4,2,29,9,12,8,5,14,21,8,12,17,16,6,26,3};
 
 
-  ans = superiorElements(arr);
-  printArray(ans);
+  ans = longestSuccessiveElements(arr);
+  cout<<"ans: "<<ans<<endl;
 
 
-  cout<<"\n\n=======================";
+
+
+
+  cout << "\n\n=======================";
   return 0;
 }
+
