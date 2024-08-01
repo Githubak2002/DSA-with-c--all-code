@@ -3,6 +3,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// print arr ele
+void printArray(vector<int> arr)
+{
+  for (int i = 0; i < arr.size(); i++)
+    cout << arr[i] << " ";
+  cout << endl;
+}
+
+
 // rotating an array about n ele
 void rotate(vector<int> &arr, int rotateEle)
 {
@@ -56,20 +65,6 @@ int majorityElement(vector<int> v)
   int majorityEle = v[index];
   return majorityEle;
 }
-int majorityElementUsingMap(vector<int> v)
-{
-  map<int, int> mp;
-  for (int i = 0; i < v.size(); i++)
-  {
-    mp[v[i]]++;
-  }
-  for (auto it : mp)
-  {
-    if (it.second > v.size() / 2)
-      return it.first;
-  }
-  return -1;
-}
 
 // rearrange arr ele as +ve,-ve,+ve...
 vector<int> alternateNumbers(vector<int> &a)
@@ -92,6 +87,26 @@ vector<int> alternateNumbers(vector<int> &a)
   return ans;
 }
 
+// Superior ele - ele > all the ele present to its right
+vector<int> superiorElements(vector<int>&a) {
+    int maxEle,n = a.size();
+    vector<int> ans;
+    cout<<"n = "<<n<<endl;
+    if(n >= 1){
+        maxEle = a[n-1];
+        ans.push_back(a[n-1]);
+    }
+    for(int i=n-2;i>=0;i--){
+        if(maxEle < a[i]){
+            ans.push_back(a[i]);
+            maxEle = max(maxEle,a[i]);
+        }
+    }
+    return ans;
+}
+
+
+
 // Kadane's algo to find the maxsum of sub array
 long long maxSubarraySum(vector<int> arr, int n)
 {
@@ -110,9 +125,7 @@ long long maxSubarraySum(vector<int> arr, int n)
       endIndex = i;
     }
     if (sum < 0)
-    {
       sum = 0;
-    }
   }
   return maxSum;
 }
@@ -143,6 +156,8 @@ int maximumProfit(vector<int> &prices)
   // }
   // return maxPro>0 ? maxPro : 0;
 }
+
+
 
 // finding next grater permutation [3,2,5,4,0] - [3,4,0,2,5]
 vector<int> nextGreaterPermutation(vector<int> &A)
@@ -200,10 +215,18 @@ int maxLengthSubarray(int arr[], int n, int targetSum)
 
 int main()
 {
-  // vector<int> arr= {7,1,2,4,6,2};
-  vector<int> arr = {7, 6, 5, 2};
-  // vector<int> arr= {6,2,4,5,9,12,9,5};
-  cout << "Profit: " << maximumProfit(arr);
+  cout<<"=======================\n\n";
 
+  // vector<int> arr= {7,1,2,4,6,2};
+  vector<int> ans;
+  // vector<int> arr = {7, 6, 5, 2};
+  vector<int> arr = {5,4,3};
+
+
+  ans = superiorElements(arr);
+  printArray(ans);
+
+
+  cout<<"\n\n=======================";
   return 0;
 }
