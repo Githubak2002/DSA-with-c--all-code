@@ -39,7 +39,7 @@ int main()
 
   cout << "Elements of the set:\n";
   for (auto it : set1)
-    cout << it << " ";
+    cout << it << " "; 
   cout<<"\n";
 
   for (int i = 1; i <= 10; i++)
