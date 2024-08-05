@@ -11,7 +11,7 @@ void printArray(vector<int> arr)
   cout << endl;
 }
 
-// rotating an array about n ele
+// ROTATING an array about n ele [use mod]
 void rotate(vector<int> &arr, int rotateEle)
 {
   reverse(arr.begin(), arr.begin() + rotateEle);
@@ -50,7 +50,7 @@ void sortArray(vector<int> &arr, int n)
       mid++;
     }
     else
-    { // arr[mid] == 2
+    { 
       swap(arr[mid], arr[high--]);
     }
   }
@@ -134,7 +134,7 @@ int longestSuccessiveElements(vector<int> &a)
   return maxCount;
 }
 
-// Kadane's algo to find the maxsum of sub array
+// KADANE's algo to find the maxsum of sub array
 long long maxSubarraySum(vector<int> arr, int n)
 {
   // Kadane's algo
