@@ -17,141 +17,162 @@ int binarySearch(vector<int> arr, int x)
   {
     int mid = left + (right - left) / 2;
     if (arr[mid] == x)
-    return mid;
+      return mid;
     else if (arr[mid] > x)
-    right = mid - 1;
+      right = mid - 1;
     else
-    left = mid+1;
+      left = mid + 1;
   }
 }
 
+// finding square root
+int floorSqrt(int n)
+{
+  int start = 1,end = n;
+  long long mid;
+  long long value;
+  while(start<=end)
+  {
+    mid = start+(end-start)/2;
+    value = mid*mid;
+    if(value <= n){
+      start = mid+1;
+    }
+    else
+      end = mid-1;
+  }
+  return end;
+}
 
 // LOWERBOUND - array ele >= x (CEIL in sorted arr)
 // cout<<"index: "<<lower_bound(a.begin(),a.end(),3) - a.begin();
 int LowerBound(vector<int> &arr, int x, int n)
 {
-	int ans = n;
-	int start = 0,end = n-1;
-	int mid;
-	while(start<=end){
-		mid = start + (end-start)/2;
-		if(arr[mid] >= x)
-		{
-			ans = mid;
-			end = mid-1;
-		}
-		else
-			start = mid+1;
-	}
-	return ans;
+  int ans = n;
+  int start = 0, end = n - 1;
+  int mid;
+  while (start <= end)
+  {
+    mid = start + (end - start) / 2;
+    if (arr[mid] >= x)
+    {
+      ans = mid;
+      end = mid - 1;
+    }
+    else
+      start = mid + 1;
+  }
+  return ans;
 }
 
 // upperBound - array ele > x (FLOOR in sorted arr >=)
 int upperBound(vector<int> &arr, int x, int n)
 {
-	int ans = n;
-	int start = 0,end = n-1;
-	int mid;
-	while(start<=end){
-		mid = start + (end-start)/2;
-		if(arr[mid] > x)
-		{
-			ans = mid;
-			end = mid-1;
-		}
-		else
-			start = mid+1;
-	}
-	return ans;
+  int ans = n;
+  int start = 0, end = n - 1;
+  int mid;
+  while (start <= end)
+  {
+    mid = start + (end - start) / 2;
+    if (arr[mid] > x)
+    {
+      ans = mid;
+      end = mid - 1;
+    }
+    else
+      start = mid + 1;
+  }
+  return ans;
 }
 
 // first and last index of the array ele
-pair<int, int> firstAndLastPosition(vector<int>& arr, int n, int k)
+pair<int, int> firstAndLastPosition(vector<int> &arr, int n, int k)
 {
-  int firstIndex = -1,lastIndex = -1;
-  firstIndex = lower_bound(arr.begin(),arr.end(),k)-arr.begin();
-  if(arr[firstIndex] != k)  
-    return {-1,-1};
+  int firstIndex = -1, lastIndex = -1;
+  firstIndex = lower_bound(arr.begin(), arr.end(), k) - arr.begin();
+  if (arr[firstIndex] != k)
+    return {-1, -1};
 
-  lastIndex = upper_bound(arr.begin(),arr.end(),k)-arr.begin();
+  lastIndex = upper_bound(arr.begin(), arr.end(), k) - arr.begin();
   lastIndex -= 1;
 
-  return {firstIndex,lastIndex};
+  return {firstIndex, lastIndex};
 }
 
-
-
-// SEARCH in a ROTATED sorted array 
-int searchInARotatedSortedArray(vector<int>& arr, int n, int k)
+// SEARCH in a ROTATED sorted array
+int searchInARotatedSortedArray(vector<int> &arr, int n, int k)
 {
-  int start=0,end=n-1,mid;
-  while(start<=end)
+  int start = 0, end = n - 1, mid;
+  while (start <= end)
   {
-    mid = start + (end-start)/2;
-    if(arr[mid] == k)
+    mid = start + (end - start) / 2;
+    if (arr[mid] == k)
       return mid;
-    else if(arr[start]<=arr[mid])   // left part is sorted
+    else if (arr[start] <= arr[mid]) // left part is sorted
     {
-      if(arr[start] <= k && arr[mid] >= k)
-        end = mid-1;
+      if (arr[start] <= k && arr[mid] >= k)
+        end = mid - 1;
       else
-        start = mid+1;
+        start = mid + 1;
     }
-    else                            // right part is sorted
-      if(arr[mid] <= k && arr[end]>= k)
-        start = mid+1;
+    else // right part is sorted
+      if (arr[mid] <= k && arr[end] >= k)
+        start = mid + 1;
       else
-        end = mid-1;
+        end = mid - 1;
   }
   return -1;
 }
 
 // search In a rotated sorted array II
-bool searchInARotatedSortedArrayII(vector<int>&A, int key) {
+bool searchInARotatedSortedArrayII(vector<int> &A, int key)
+{
   int n = A.size();
-  int start=0,end=n-1,mid;
-  while(start<=end)
+  int start = 0, end = n - 1, mid;
+  while (start <= end)
   {
-    mid = start + (end-start)/2;
-    if(A[mid] == key)
+    mid = start + (end - start) / 2;
+    if (A[mid] == key)
       return true;
-    if(A[mid] == A[start] && A[end] == A[mid])
+    if (A[mid] == A[start] && A[end] == A[mid])
     {
-      start++;  end--;  continue;
+      start++;
+      end--;
+      continue;
     }
-    else if(A[start]<=A[mid])   // left part is sorted
+    else if (A[start] <= A[mid]) // left part is sorted
     {
-      if(A[start] <= key && A[mid] >= key)
-        end = mid-1;
+      if (A[start] <= key && A[mid] >= key)
+        end = mid - 1;
       else
-        start = mid+1;
+        start = mid + 1;
     }
-    else                            // right part is sorted
-      if(A[mid] <= key && A[end]>= key)
-        start = mid+1;
+    else // right part is sorted
+      if (A[mid] <= key && A[end] >= key)
+        start = mid + 1;
       else
-        end = mid-1;
+        end = mid - 1;
   }
   return false;
 }
 
-// search MIN In a rotated sorted array II
-int findMinInARotatedSortedArray(vector<int>& arr)
+// search MIN In a rotated sorted array
+int findMinInARotatedSortedArray(vector<int> &arr)
 {
-	int start = 0,end = arr.size()-1,mid;
+  int start = 0, end = arr.size() - 1, mid;
   int mini = INT_MAX;
-  while(start<=end)
+  while (start <= end)
   {
-    mid = start + (end-start)/2;
-    if(arr[mid] <= arr[end])
+    mid = start + (end - start) / 2;
+    if (arr[mid] <= arr[end])
     {
-      mini = min(arr[mid],mini);
-      end = mid-1;
+      mini = min(arr[mid], mini);
+      end = mid - 1;
     }
-    else 
+    else
     {
-      mini = min(mini,arr[start]);
-      start = mid+1;
+      mini = min(mini, arr[start]);
+      start = mid + 1;
     }
   }
   return mini;
@@ -159,22 +180,112 @@ int findMinInARotatedSortedArray(vector<int>& arr)
 
 
 
+// Find No of times sorted arr is ROTATED
+int findKRotation(vector<int> &arr)
+{
+  int start = 0, end = arr.size() - 1, mid;
+  int mini = INT_MAX, index;
+  while (start <= end)
+  {
+    mid = start + (end - start) / 2;
+    if (arr[mid] <= arr[end])
+    {
+      if (arr[mid] < mini)
+      {
+        mini = arr[mid];
+        index = mid;
+      }
+      end = mid - 1;
+    }
+    else
+    {
+      if (arr[start] <= mini)
+      {
+        mini = arr[start];
+        index = start;
+      }
+      start = mid + 1;
+    }
+  }
+  return index;
+}
+
+// All ele appares twice except one, find that ele
+int singleNonDuplicate(vector<int> &arr)
+{
+  int n = arr.size();
+  // Edge cases:
+  if (n == 1)
+    return arr[0];
+  if (arr[0] != arr[1])
+    return arr[0];
+  if (arr[n - 1] != arr[n - 2])
+    return arr[n - 1];
+
+  int low = 1, high = n - 2;
+  while (low <= high)
+  {
+    int mid = (low + high) / 2;
+
+    // if arr[mid] is the single element:
+    if (arr[mid] != arr[mid + 1] && arr[mid] != arr[mid - 1])
+      return arr[mid];
+
+    // we are in the left: eliminate the left half:
+    if ((mid % 2 == 1 && arr[mid] == arr[mid - 1]) || (mid % 2 == 0 && arr[mid] == arr[mid + 1]))
+      low = mid + 1;
+
+    // we are in the right: eliminate the right half
+    else
+      high = mid - 1;
+  }
+
+  return -1;
+}
+
+// FINDING PEAK ELEMENT
+int findPeakElement(vector<int> &arr) {
+    int n = arr.size();
+    if(n==1)   return 0;
+    if(arr[0]>arr[1]) return 0;    
+    if(arr[n-1]>arr[n-2]) return n-1;
+
+    int start = 1,end = n-2,mid;
+
+    while(start <= end)
+    {
+        mid = start+(end-start)/2;
+        if(arr[mid]>arr[mid+1] && arr[mid]>arr[mid-1])
+            return mid;
+        else if (arr[mid-1]<arr[mid])
+            start = mid+1;
+        else
+            end = mid-1;
+    }
+    return -1;
+}
+
+
+
+
 int main()
 {
   cout << "\n\n=======================\n\n";
 
-  vector<int> a = {3,4,5,6,7,1,2};
-  // vector<int> a = {7,8,1,2,3,4,5};
+  // vector<int> a = {3,4,5,6,7,1,2};
+  vector<int> a = {3, 3, 5, 5, 7, 7, 8, 9, 9};
 
   // cout<<"index: "<<upper_bound(a.begin(),a.end(),3)-a.begin();
 
-  cout<<findMinInARotatedSortedArray(a)<<endl;
-
+  // cout << singleNonDuplicate(a) << endl;
   
+  cout << floorSqrt(7) << endl;
+
+
+
   cout << "\n\n=======================";
   return 0;
 }
-
 
 // print 2D A ele
 void print2Darr(vector<vector<int>> arr)
@@ -190,8 +301,6 @@ void print2Darr(vector<vector<int>> arr)
   }
 }
 
-
-
 char toLowerCaseFun(char ch)
 {
   if (ch >= 'a' && ch <= 'z')
@@ -200,7 +309,19 @@ char toLowerCaseFun(char ch)
     return ch + 32;
 }
 
-/* 
+
+
+
+
+// =============== All above Function explained ===============
+/*
+  FINDING PEAK ELE - 
+    finding the index of peak ele. Peak ele is arr[mid-1] < Peak ele > arr[mid+1]
+    asuming arr[-1] and arr[n] = -infinity
+*/
+
+
+/*
 sort(arr.begin(), arr.end());
 reverse(arr.begin(), arr.end());
 
