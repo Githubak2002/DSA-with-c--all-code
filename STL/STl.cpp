@@ -24,28 +24,42 @@ int main()
 {
   cout << "\n\n=======================\n\n";
 
-  // === Array and set ===
-  int arr[8] = {1, 2, 3, 4, 5, 3, 5, 2};
+  // ================= Array and SET =================
+  vector<int> arr = {1, 2, 3, 4, 5, 3, 5, 2};
   set<int> set1;
 
-  for (int i = 0; i < 8; i++)
+  for (int i = 0; i < arr.size(); i++)
     set1.insert(arr[i]);
 
-  cout << "Elements of the array:\n";
-  for (auto i : arr)
+  cout << "Ele in the array:\n";
+  for (int i=0;i<arr.size(); i++)
     cout << arr[i] << " ";
-
   cout << "\n";
-
-  cout << "Elements of the set:\n";
+  cout << "Ele in the set:\n";
   for (auto it : set1)
     cout << it << " "; 
-  cout<<"\n";
+  cout<<"\n\n\n";
 
-  for (int i = 1; i <= 10; i++)
-  {
-    cout << "21 * " << i <<" = "<< 21 * 1 << endl;
+  // ================= MAP =================
+
+  // MAP (by default assending order, 0 to 1/a to z)  
+  // TC - O(logn) for Insertion/Deletion/Search/Access by Key
+
+  map<string, int> ageMap;
+
+  ageMap["Alice"] = 30;
+  ageMap["Bob"] = 25;
+  ageMap["Charlie"] = 35;
+
+  for (const auto& pair : ageMap) {
+      cout << pair.first << ": " << pair.second << endl;
   }
+  // cout << "Bob's age: " << ageMap["Bob"] << endl;
+
+
+  // unordered_map (no specific order)
+  // TC - Average case O(1), but worst case O(n)
+
 
   cout << "\n\n=======================";
   return 0;

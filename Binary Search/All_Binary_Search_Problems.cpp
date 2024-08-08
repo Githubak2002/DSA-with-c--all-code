@@ -267,27 +267,76 @@ int findPeakElement(vector<int> &arr) {
 
 
 
-
-int main()
+int maxInArr(vector<int> arr)
 {
-  cout << "\n\n=======================\n\n";
-
-  // vector<int> a = {3,4,5,6,7,1,2};
-  vector<int> a = {3, 3, 5, 5, 7, 7, 8, 9, 9};
-
-  // cout<<"index: "<<upper_bound(a.begin(),a.end(),3)-a.begin();
-
-  // cout << singleNonDuplicate(a) << endl;
-  
-  cout << floorSqrt(7) << endl;
-
-
-
-  cout << "\n\n=======================";
-  return 0;
+  int maxi = INT_MIN;
+  for (int i = 0; i < arr.size(); i++)
+  {
+    if(arr[i]>maxi)
+      maxi = arr[i];
+  }
+  return maxi;  
 }
 
-// print 2D A ele
+int calculateTotalHours(vector<int> arr,int hourly)
+{
+  int totalH = 0;
+  for (int i = 0; i < arr.size(); i++)
+    totalH += ceil(double(arr[i])/double(hourly));
+  return totalH;
+}
+
+// Koko eating bananas
+int minimumRateToEatBananas(vector<int> v, int h) {
+  int start = 1,end = maxInArr(v);
+  int mid,hrRate,ans=1;
+
+  while(start <= end)
+  {
+    mid = start+(end-start)/2;
+    int hrRate = calculateTotalHours(v,mid);
+    // cout<<"hrRate: "<<hrRate<<endl;
+    if(hrRate <= h){
+      ans = mid;
+      end = mid-1;
+    }
+    else start = mid+1;
+  }
+  return ans;
+}
+
+int minimumRateToEatBananas(vector<int> v, int h) {
+    int low = 1, high = maxInArr(v);
+
+    while (low <= high) {
+        int mid = (low + high) / 2;
+        int totalH = calculateTotalHours(v, mid);
+        if (totalH <= h) {
+            high = mid - 1;
+        }
+        else {
+            low = mid + 1;
+        }
+    }
+    return low;
+}
+
+
+
+
+
+// =================================================
+
+
+int pow(int x,int n){
+  if(n==0) return 1;
+
+  int ans = 1;
+  for (int i = 0; i < n; i++)
+    ans = x * ans;
+  return ans;
+}
+
 void print2Darr(vector<vector<int>> arr)
 {
   int rows = arr.size(), cols = arr[0].size();
@@ -308,6 +357,33 @@ char toLowerCaseFun(char ch)
   else
     return ch + 32;
 }
+
+
+
+int main()
+{
+  cout << "\n\n=======================\n\n";
+
+  // vector<int> a = {3,4,5,6,7,1,2};
+  vector<int> a = {3, 6, 2, 8};
+  int ans = minimumRateToEatBananas(a,7);
+  cout<<"ans: "<<ans;
+
+  // cout<<"index: "<<upper_bound(a.begin(),a.end(),3)-a.begin();
+
+  // cout << singleNonDuplicate(a) << endl;
+  
+  // cout << floorSqrt(7) << endl;
+
+  // cout<<pow(4,4)<<endl;
+
+
+
+  cout << "\n\n=======================";
+  return 0;
+}
+
+
 
 
 
@@ -336,3 +412,19 @@ vector<int> arr = {1,2,3};   cout<<"first ele "<<*arr.begin();
 // cout<<"enter a string"<<endl;
 // getline(cin,str);
 // cout<<"String = "<<str;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

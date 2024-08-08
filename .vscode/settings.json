@@ -50,6 +50,7 @@
     "shared_mutex": "cpp",
     "thread": "cpp",
     "regex": "cpp",
-    "valarray": "cpp"
+    "valarray": "cpp",
+    "list": "cpp"
   }
 }
