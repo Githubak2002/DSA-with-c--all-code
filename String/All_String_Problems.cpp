@@ -178,11 +178,7 @@ string reverseString(string &str){
 // finding the first Non repeating char
 char findNonRepeating(string str) {
     unordered_map<char,int> mpp;
-    for (int i = 0; i <= n; i++)
-    {
-        mpp[i]
-    }
-    
+    for(auto c: str)
         mpp[c]++;
     
     for(auto ch: str){
@@ -199,11 +195,7 @@ int firstUniqueCharacter(string s , int n) {
     {
         mpp[i]++;
     }
-    for (int i = 1; i <= n; i++)
-    {
-        if(mpp[i]==1)
-            return i;
-    }
+    
     
 
 }

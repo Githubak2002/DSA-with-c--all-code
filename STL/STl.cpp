@@ -32,17 +32,17 @@ int main()
     set1.insert(arr[i]);
 
   cout << "Ele in the array:\n";
-  for (int i=0;i<arr.size(); i++)
+  for (int i = 0; i < arr.size(); i++)
     cout << arr[i] << " ";
   cout << "\n";
   cout << "Ele in the set:\n";
   for (auto it : set1)
-    cout << it << " "; 
-  cout<<"\n\n\n";
+    cout << it << " ";
+  cout << "\n\n\n";
 
   // ================= MAP =================
 
-  // MAP (by default assending order, 0 to 1/a to z)  
+  // MAP (by default assending order, 0 to 1/a to z)
   // TC - O(logn) for Insertion/Deletion/Search/Access by Key
 
   map<string, int> ageMap;
@@ -51,15 +51,20 @@ int main()
   ageMap["Bob"] = 25;
   ageMap["Charlie"] = 35;
 
-  for (const auto& pair : ageMap) {
-      cout << pair.first << ": " << pair.second << endl;
+  for (const auto &pair : ageMap)
+  {
+    cout << pair.first << ": " << pair.second << endl;
   }
   // cout << "Bob's age: " << ageMap["Bob"] << endl;
 
+  string keyToCheck = "Bob";
+  if (ageMap.find(keyToCheck) != ageMap.end())
+    cout<<keyToCheck<<" is present in the map" << endl;
+  else
+    cout<<keyToCheck<<" is not present in the map" << endl;
 
   // unordered_map (no specific order)
   // TC - Average case O(1), but worst case O(n)
-
 
   cout << "\n\n=======================";
   return 0;

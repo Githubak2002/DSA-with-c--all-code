@@ -51,6 +51,25 @@
     "thread": "cpp",
     "regex": "cpp",
     "valarray": "cpp",
-    "list": "cpp"
+    "list": "cpp",
+    "bitset": "cpp",
+    "cfenv": "cpp",
+    "chrono": "cpp",
+    "cinttypes": "cpp",
+    "codecvt": "cpp",
+    "complex": "cpp",
+    "condition_variable": "cpp",
+    "csetjmp": "cpp",
+    "csignal": "cpp",
+    "cstring": "cpp",
+    "ctime": "cpp",
+    "cuchar": "cpp",
+    "map": "cpp",
+    "ratio": "cpp",
+    "set": "cpp",
+    "iomanip": "cpp",
+    "mutex": "cpp",
+    "scoped_allocator": "cpp",
+    "typeindex": "cpp"
   }
 }
