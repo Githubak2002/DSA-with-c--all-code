@@ -97,6 +97,29 @@ string replaceSpaces(string str){
 	return ans;
 }
 
+// is Valid Parenthesis
+bool isValidParenthesis(string s)
+{
+    stack<char> st;
+    for (char c : s) {
+        if (c == '[' || c == '{' || c == '(') 
+            st.push(c);
+
+        else if (c == ')' || c == ']' || c == '}') {
+            if (st.empty()) return false; 
+            char top = st.top();
+            if ((c == ')' && top != '(') ||
+                (c == ']' && top != '[') ||
+                (c == '}' && top != '{')) 
+                    return false; 
+            st.pop();
+        } else {
+            return false; 
+        }
+    }
+    
+    return st.empty();
+}
 
 
 // ===================== MEDIUM LEVEL =====================
@@ -190,31 +213,70 @@ char findNonRepeating(string str) {
 
 // finding the index of Non repeating char
 int firstUniqueCharacter(string s , int n) {
-	map<int,int> mpp;
-    for (int i = 1; i <= n; i++)
-    {
-        mpp[i]++;
-    }
-    
-    
+	map<char,int> mpp;
 
+    for(auto ch: s)
+        mpp[ch]++;
+    for (int i = 0; i <= n; i++)
+    {
+        if(mpp[s[i]] == 1)
+            return i;
+    }
+    return -1;  
 }
 
+// length of Longest Substring Without Repeating Characters
+int uniqueSubstrings(string input)
+{   
+    map<char,int> mpp;
+    int i = 0,count = 0,maxLen = 0;
+    while(i < input.size())
+    {
+        mpp[input[i]]++;
+        if(mpp[input[i]] == 1)
+        {
+            count++;
+            i++;
+        }
+        else
+        {
+            maxLen = max(count,maxLen);
+            mpp.clear();
+            count = 0;
+        }
+    }
+    maxLen = max(count,maxLen);
+    return maxLen;    
+}
 
+// 451 sort charactes by frequency
+string frequencySort(string s)
+{
+    map<char,int> mpp;
+    for(auto ch: s)
+        mpp[ch]++;
+    
+    for (auto x : mpp)
+    {
+        cout<<x.first<<" appares "<<x.second<<endl;
+    }
+    return "";
+}
 
-
-
+ 
 int main()
 {
     cout << "===============\n\n";
-    
 
+  
     // cout << "String: " << removeConsecutiveDuplicates("aabbbcc") << endl;
 
-    char ans;
-    ans = findNonRepeating("cbbd");
-    // ans = longestPalinSubstring("koabcbal");
-    cout<<ans;
+    string s = "ANURAG";
+    int ans,n = s.size();
+    // ans = firstUniqueCharacter(s,n);
+    // ans = .llongestPalinSubstring("koabcbal");
+    // cout<<ans;
+    frequencySort("abhishek");
 
     cout << "\n\n===============";
 }
