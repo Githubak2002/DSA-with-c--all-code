@@ -124,8 +124,34 @@ bool isValidParenthesis(string s)
 
 // ===================== MEDIUM LEVEL =====================
 
+bool isAlphaNumeric(char c)
+{
+    return (c>='a' && c<='z' ) || (c>='A' && c<='Z') || (c>='0' && c<='9') ;
+}
+// check Palindrome considering only alphanumeric characters
+bool checkPalindrome(char str[]) 
+{
+    int len = strlen(str);
+    int start = 0,end = len-1;
+    while(start<end)
+    {
+        if(!isAlphaNumeric(str[start]))
+            start++;
+        else if(!isAlphaNumeric(str[end]))
+            end--;
+        else if(str[start] == str[end])
+        {
+            start++;    end--;
+        }
+        else{
+            cout<<"start: "<<start<<endl;
+            cout<<"end: "<<end<<endl;
+            return false;
+        } 
+    }
+    return true;
+}
 
-// check Palindrome ignoring case sensitive and special char
 
 // finding longest Palindrom Substring
 string longestPalinSubstring(string s) {
@@ -263,6 +289,7 @@ string frequencySort(string s)
     return "";
 }
 
+
  
 int main()
 {
@@ -272,11 +299,11 @@ int main()
     // cout << "String: " << removeConsecutiveDuplicates("aabbbcc") << endl;
 
     string s = "ANURAG";
-    int ans,n = s.size();
+    bool ans,n = s.size();
     // ans = firstUniqueCharacter(s,n);
     // ans = .llongestPalinSubstring("koabcbal");
     // cout<<ans;
-    frequencySort("abhishek");
+
 
     cout << "\n\n===============";
 }
@@ -291,6 +318,12 @@ int main()
     cout << "c: "<< char(c - 32) << endl;
     cout << "B to lowerCase: "<< char('B' + 32) << endl;
     cout << "c to upperCase: "<< char('c' - 32) << endl;
+
+    char str[] = {'a','b','c','b','a','\0'};
+    int len = strlen(str);
+
+    float f = static_cast<float>(i);
+    str = std::to_string(num);
 */
 
 

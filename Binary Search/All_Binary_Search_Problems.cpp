@@ -267,6 +267,10 @@ int findPeakElement(vector<int> &arr) {
 
 
 
+
+
+
+
 int maxInArr(vector<int> arr)
 {
   int maxi = INT_MIN;
